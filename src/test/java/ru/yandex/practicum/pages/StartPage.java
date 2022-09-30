@@ -8,71 +8,71 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class StartPage {
-    private final WebDriver driver;
+    private WebDriver driver;
 
     // Раздел "Вопросы о важном": 1-й блок "Сколько это стоит? И как оплатить?"
-    private final By firstAccordionQuestion = By.xpath(".//div[@id='accordion__heading-0']");
+    private By firstAccordionQuestion = By.xpath(".//div[@id='accordion__heading-0']");
 
     // Раздел "Вопросы о важном": 2-й блок "Хочу сразу несколько самокатов! Так можно?"
-    private final By secondAccordionQuestion = By.xpath(".//div[@id='accordion__heading-1']");
+    private By secondAccordionQuestion = By.xpath(".//div[@id='accordion__heading-1']");
 
     // Раздел "Вопросы о важном": 3-й блок "Как рассчитывается время аренды?"
-    private final By thirdAccordionQuestion = By.xpath(".//div[@id='accordion__heading-2']");
+    private By thirdAccordionQuestion = By.xpath(".//div[@id='accordion__heading-2']");
 
     // Раздел "Вопросы о важном": 4-й блок "Можно ли заказать самокат прямо на сегодня?"
-    private final By fourthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-3']");
+    private By fourthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-3']");
 
     // Раздел "Вопросы о важном": 5-й блок "Можно ли продлить заказ или вернуть самокат раньше?"
-    private final By fifthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-4']");
+    private By fifthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-4']");
 
     // Раздел "Вопросы о важном": 6-й блок "Вы привозите зарядку вместе с самокатом?"
-    private final By sixthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-5']");
+    private By sixthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-5']");
 
     // Раздел "Вопросы о важном": 7-й блок "Можно ли отменить заказ?"
-    private final By seventhAccordionQuestion = By.xpath(".//div[@id='accordion__heading-6']");
+    private By seventhAccordionQuestion = By.xpath(".//div[@id='accordion__heading-6']");
 
     // Раздел "Вопросы о важном": 8-й блок "Я жизу за МКАДом, привезёте?"
-    private final By eighthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-7']");
+    private By eighthAccordionQuestion = By.xpath(".//div[@id='accordion__heading-7']");
 
     // Раздел "Вопросы о важном": ответ 1-го блока
-    private final By firstAccordionAnswer = By.xpath(".//div[@id='accordion__panel-0']/p");
+    private By firstAccordionAnswer = By.xpath(".//div[@id='accordion__panel-0']/p");
 
     // Раздел "Вопросы о важном": ответ 2-го блока
-    private final By secondAccordionAnswer = By.xpath(".//div[@id='accordion__panel-1']/p");
+    private By secondAccordionAnswer = By.xpath(".//div[@id='accordion__panel-1']/p");
 
     // Раздел "Вопросы о важном": ответ 3-го блока
-    private final By thirdAccordionAnswer = By.xpath(".//div[@id='accordion__panel-2']/p");
+    private By thirdAccordionAnswer = By.xpath(".//div[@id='accordion__panel-2']/p");
 
     // Раздел "Вопросы о важном": ответ 4-го блока
-    private final By fourthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-3']/p");
+    private By fourthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-3']/p");
 
     // Раздел "Вопросы о важном": ответ 5-го блока
-    private final By fifthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-4']/p");
+    private By fifthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-4']/p");
 
     // Раздел "Вопросы о важном": ответ 6-го блока
-    private final By sixthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-5']/p");
+    private By sixthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-5']/p");
 
     // Раздел "Вопросы о важном": ответ 7-го блока
-    private final By seventhAccordionAnswer = By.xpath(".//div[@id='accordion__panel-6']/p");
+    private By seventhAccordionAnswer = By.xpath(".//div[@id='accordion__panel-6']/p");
 
     // Раздел "Вопросы о важном": ответ 8-го блока
-    private final By eighthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-7']/p");
+    private By eighthAccordionAnswer = By.xpath(".//div[@id='accordion__panel-7']/p");
 
     //Первая кнопка "Заказать" на странице
-    private final By firstOrderButton = By.xpath(".//div[contains(@class, 'Header')]/button[text()='Заказать']");
+    private By firstOrderButton = By.xpath(".//div[contains(@class, 'Header')]/button[text()='Заказать']");
 
     //Вторая кнопка "Заказать" на странице
-    private final By secondOrderButton = By.xpath(".//div[contains(@class, 'Home')]/button[text()='Заказать']");
+    private By secondOrderButton = By.xpath(".//div[contains(@class, 'Home')]/button[text()='Заказать']");
 
     //Ожидаемые тексты ответов в разделе "Вопросы о важном"
-    private final String firstExpectedAnswer = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-    private final String secondExpectedAnswer = "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.";
-    private final String thirdExpectedAnswer = "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.";
-    private final String fourthExpectedAnswer = "Только начиная с завтрашнего дня. Но скоро станем расторопнее.";
-    private final String fifthExpectedAnswer = "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.";
-    private final String sixthExpectedAnswer = "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.";
-    private final String seventhExpectedAnswer = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";
-    private final String eighthExpectedAnswer = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";
+    private String firstExpectedAnswer = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
+    private String secondExpectedAnswer = "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.";
+    private String thirdExpectedAnswer = "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.";
+    private String fourthExpectedAnswer = "Только начиная с завтрашнего дня. Но скоро станем расторопнее.";
+    private String fifthExpectedAnswer = "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.";
+    private String sixthExpectedAnswer = "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.";
+    private String seventhExpectedAnswer = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";
+    private String eighthExpectedAnswer = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";
 
     //Массив из элементов-вопросов из раздела "Вопросы о важном" для использования в тестах
     By[] accordionQuestions = {firstAccordionQuestion, secondAccordionQuestion, thirdAccordionQuestion, fourthAccordionQuestion,

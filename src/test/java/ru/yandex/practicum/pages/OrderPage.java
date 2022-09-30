@@ -6,49 +6,49 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class OrderPage {
-    private final WebDriver driver;
+    private WebDriver driver;
 
     // Интерактивный логотип "Самокат" на форме "Для кого самокат" (для возврата на стартовую страницу)
-    private final By logoScooter = By.xpath(".//a[contains(@class, 'LogoScooter')]");
+    private By logoScooter = By.xpath(".//a[contains(@class, 'LogoScooter')]");
 
     // Форма заказа на этапе "Для кого самокат"
-    private final By orderForm = By.xpath(".//div[contains(@class, 'Order_Form')]");
+    private By orderForm = By.xpath(".//div[contains(@class, 'Order_Form')]");
 
     // Поле "Имя" на форме "Для кого самокат"
-    private final By nameInput = By.xpath(".//input[contains(@placeholder, 'Имя')]");
+    private By nameInput = By.xpath(".//input[contains(@placeholder, 'Имя')]");
 
     // Поле "Фамилия" на форме "Для кого самокат"
-    private final By surnameInput = By.xpath(".//input[contains(@placeholder, 'Фамилия')]");
+    private By surnameInput = By.xpath(".//input[contains(@placeholder, 'Фамилия')]");
 
     // Поле "Адрес" на форме "Для кого самокат"
-    private final By addressInput = By.xpath(".//input[contains(@placeholder, 'Адрес')]");
+    private By addressInput = By.xpath(".//input[contains(@placeholder, 'Адрес')]");
 
     // Поле "Станция метро" на форме "Для кого самокат"
-    private final By metroInput = By.xpath(".//input[contains(@placeholder, 'метро')]");
+    private By metroInput = By.xpath(".//input[contains(@placeholder, 'метро')]");
 
     // Поле "Телефон" на форме "Для кого самокат"
-    private final By phoneInput = By.xpath(".//input[contains(@placeholder, 'Телефон')]");
+    private By phoneInput = By.xpath(".//input[contains(@placeholder, 'Телефон')]");
 
     // Кнопка "Далее" на форме "Для кого самокат"
-    private final By nextButton = By.xpath(".//button[text()='Далее']");
+    private By nextButton = By.xpath(".//button[text()='Далее']");
 
     // Поле "Когда привезти самокат" на форме "Про аренду"
-    private final By dateInput = By.xpath(".//input[contains(@placeholder, 'Когда')]");
+    private By dateInput = By.xpath(".//input[contains(@placeholder, 'Когда')]");
 
     // Выпадающий список "Срок аренды" на форме "Про аренду"
-    private final By rentalPeriodDropdownList = By.xpath(".//div[@class='Dropdown-control']");
+    private By rentalPeriodDropdownList = By.xpath(".//div[@class='Dropdown-control']");
 
     // Любое значение из выпадающиго списока "Срок аренды" на форме "Про аренду"
-    private final By valueOfRentalPeriodDropdownList = By.xpath(".//div[@class='Dropdown-option']");
+    private By valueOfRentalPeriodDropdownList = By.xpath(".//div[@class='Dropdown-option']");
 
     // Кнопка "Заказать" под формой "Про аренду"
-    private final By orderButton = By.xpath("(.//button[text()='Заказать'])[2]");
+    private By orderButton = By.xpath("(.//button[text()='Заказать'])[2]");
 
     // Кнопка "Да" на поп-апе "Хотите оформить заказ?"
-    private final By yesPopupButton = By.xpath(".//button[text()='Да']");
+    private By yesPopupButton = By.xpath(".//button[text()='Да']");
 
     // Блок с номером оформленного заказа на поп-апе "Заказ оформлен"
-    private final By infoAboutCreatedOrder = By.xpath(".//div[text()='Заказ оформлен']/div");
+    private By infoAboutCreatedOrder = By.xpath(".//div[text()='Заказ оформлен']/div");
 
     public OrderPage(WebDriver driver){
         this.driver = driver;
@@ -149,16 +149,11 @@ public class OrderPage {
     }
 
     //Ожидание появления блока с номером оформленного заказа на поп-апе "Заказ оформлен"
-    //Проверка, что информация о созданном заказе отображается. Вывод номера заказа.
-    public void checkVisibilityAndPrintInfoAboutCreatedOrder() {
+    //Проверка, что информация о созданном заказе отображается.
+    public void checkVisibilityInfoAboutCreatedOrder() {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(infoAboutCreatedOrder));
         Assert.assertTrue("Информация об оформленном заказе должна быть видна на поп-апе 'Заказ оформлен'",
                 driver.findElement(infoAboutCreatedOrder).isDisplayed());
-        // Вывод в консоль номера заказа
-        String orderInfoText = driver.findElement(infoAboutCreatedOrder).getText();
-        int indexOfDot = orderInfoText.indexOf(".");
-        String orderNumber = orderInfoText.substring(0, indexOfDot);
-        System.out.println(orderNumber);
     }
 }

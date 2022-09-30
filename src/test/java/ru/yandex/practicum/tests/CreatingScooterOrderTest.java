@@ -75,7 +75,7 @@ public class CreatingScooterOrderTest {
                 .clickValueOfRentalPeriodDropdownList()
                 .clickOrderButton()
                 .clickYesPopupButton()
-                .checkVisibilityAndPrintInfoAboutCreatedOrder();
+                .checkVisibilityInfoAboutCreatedOrder();
     }
 
     @After
