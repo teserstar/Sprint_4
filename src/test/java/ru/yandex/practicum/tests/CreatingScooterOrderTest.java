@@ -16,11 +16,11 @@ import ru.yandex.practicum.pages.StartPage;
 public class CreatingScooterOrderTest {
     private WebDriver driver;
 
-    private final String name;
-    private final String surname;
-    private final String address;
-    private final String phone;
-    private final String date;
+    private String name;
+    private String surname;
+    private String address;
+    private String phone;
+    private String date;
 
     public CreatingScooterOrderTest(String name, String surname, String address, String phone, String date) {
         this.name = name;
